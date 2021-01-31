@@ -77,16 +77,16 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                        <p>$500</p>
+                        <p id="subTotal-amount">$500</p>
                     </div>
                 </div>
 
                 <div class="amount">
                     <div class="left">
-                        <p>Charge 10% VAT</p>
+                        <p >Charge 10% VAT</p>
                     </div>
                     <div class="right">
-                        <p>$50</p>
+                        <p id="tax">$50</p>
                     </div>
                 </div>
                 <hr>
@@ -95,7 +95,7 @@
                         <h4>Total</h4>
                     </div>
                     <div class="right">
-                        <p>$550</p>
+                        <p id="grand-total">$550</p>
                     </div>
                 </div>
             </div>
@@ -130,6 +130,23 @@
                 bothClassNewCount = bothClassCount -1;
             }
             bothClassInput.value = bothClassNewCount ;
+            calculateTotal();
+        }
+        function calculateTotal (){
+            const firstClassInput = document.getElementById('firstclass-count');
+            const firstClassCount = parseInt(firstClassInput.value);
+
+            const economyInput = document.getElementById('economy-count');
+            const economyCount = parseInt(economyInput.value)
+            const total = firstClassCount * 150 + economyCount * 100 ;
+            
+            document.getElementById('subTotal-amount').innerText = total;
+            const taxAmount = total * 0.1 ;
+            document.getElementById('tax').innerText = taxAmount;
+
+            const grandAmount = total + taxAmount;
+            document.getElementById('grand-total').innerText = grandAmount ;
+
         }
        
 
