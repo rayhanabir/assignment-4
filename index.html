@@ -109,19 +109,13 @@
     </section>
     
     <script>
-        //first class ticket handler:
-        // document.getElementById('ticket-increase').addEventListener('click',function(){
-        //    const ticketInput =  document.getElementById('ticket-count');
-        //    const ticketCount = parseInt(ticketInput.value);
-        //    const ticketNewCount = ticketCount + 1; 
-        //    ticketInput.value = ticketNewCount;
-        // });
+       
+        //ticket Qty calculation: 
         
-        // function in economy class:
         function ticketQtyUpdate (bothclass,isIncrease){
             const bothClassInput = document.getElementById(bothclass + '-count');
             const bothClassCount = parseInt(bothClassInput.value);
-            // const ticketNewCount = ticketCount - 1;
+           
             let bothClassNewCount = bothClassCount;
             if(isIncrease==true ){
                 bothClassNewCount = bothClassCount + 1 ;
@@ -132,7 +126,12 @@
             bothClassInput.value = bothClassNewCount ;
             calculateTotal();
         }
+
+        //final calculation:
+
+
         function calculateTotal (){
+            //subtotal calcultion
             const firstClassInput = document.getElementById('firstclass-count');
             const firstClassCount = parseInt(firstClassInput.value);
 
@@ -141,8 +140,11 @@
             const total = firstClassCount * 150 + economyCount * 100 ;
             
             document.getElementById('subTotal-amount').innerText = total;
+            //tax calculation
+
             const taxAmount = total * 0.1 ;
             document.getElementById('tax').innerText = taxAmount;
+            //grand total calculation
 
             const grandAmount = total + taxAmount;
             document.getElementById('grand-total').innerText = grandAmount ;
